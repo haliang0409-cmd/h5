@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="initial-scale=1, maximum-scale=3, minimum-scale=1, user-scalable=no">
+<title>test site</title>
+<style type="text/css">
+body,td,th {
+	text-align: center;
+	font-family: "微软雅黑", "Droid Sans Fallback", "黑体", sans-serif;
+}
+a:visited {
+	color: #FFFFFF;
+}
+</style>
+</head>
+
+<body bgcolor="#014D50" text="#FFFFFF" link="#B7CEFF">
+<h1 style="text-align: center">论坛中转站</h1>
+<hr />
+
+<blockquote>
+  <p style="text-align: left"><a href="http://124.223.73.33/">点我进入论坛</a></p>
+</blockquote>
+ <a href="#" id="hitokoto_text">:D 获取中...</a></p>
+<script>
+  var xhr = new XMLHttpRequest();
+  xhr.open('get', 'https://v1.hitokoto.cn');
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState === 4) {
+      var data = JSON.parse(xhr.responseText);
+      var hitokoto = document.getElementById('hitokoto_text');
+      hitokoto.href = 'https://hitokoto.cn/?uuid=' + data.uuid
+      hitokoto.innerText = data.hitokoto;
+    }
+  }
+  xhr.send();
+</script>
+<script>
+function clear()
+{
+    Source=document.body.innerHTML;        //获取文档的原有内容
+    document.open();                    //打开文档
+    document.write('代码已经被屏蔽');    //输出提示内容
+    document.close();                    //文档关闭
+    document.title='看不到源文件';        //文档标题
+    document.body.innerHTML=Source;        //重新写入旧内容
+}
+</script>
+</body>
+</html>
